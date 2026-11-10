@@ -17,7 +17,7 @@ fs.mkdirSync(out, { recursive: true });
 const SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif";
 const MONO = "ui-monospace,'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace";
 const SERIF_JP = "'Noto Serif JP','Hiragino Mincho ProN','Yu Mincho',serif";
-const D_PATH = 'M30 26H52A24 24 0 0 1 52 74H30ZM42 38H52A12 12 0 0 1 52 62H42Z';
+const LOGO_PATH = 'M28 26H40L50 43L60 26H72L56 52V74H44V52Z';
 
 const esc = (text) => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const save = (name, svg) => {
@@ -114,12 +114,13 @@ function hero() {
 
 <g transform="translate(70 62)">
 <rect width="68" height="68" rx="18" fill="#e5383b" fill-opacity=".35" filter="url(#gw)"/>
-<g transform="scale(.68)"><rect width="100" height="100" rx="22" fill="url(#gl)"/><path fill="#fff" fill-rule="evenodd" d="${D_PATH}"/></g>
+<g transform="scale(.68)"><rect width="100" height="100" rx="22" fill="url(#gl)"/><path fill="#fff" d="${LOGO_PATH}"/></g>
 </g>
 <text x="160" y="104" font-family="${MONO}" font-size="13" letter-spacing="4" fill="#ff8a5c">YOUR PERSONAL NEWSROOM</text>
 <text x="160" y="127" font-family="${MONO}" font-size="12" letter-spacing="2" fill="#6e7681">CLAUDE WRITES · A DESKTOP APP SHOWS</text>
 
-<text x="66" y="262" font-family="${SANS}" font-size="112" font-weight="800" letter-spacing="-3" fill="url(#title)">Dispatch</text>
+<text x="372" y="318" font-family="${SERIF_JP}" font-weight="900" font-size="320" fill="#e5383b" fill-opacity=".07">読</text>
+<text x="66" y="262" font-family="${SANS}" font-size="112" font-weight="800" letter-spacing="-3" fill="url(#title)">Yomu</text>
 <text x="70" y="318" font-family="${SANS}" font-size="22" fill="#c9d1d9">A short, illustrated news issue a few times a day.</text>
 <text x="70" y="350" font-family="${SANS}" font-size="22" fill="#9198a1">Picked from <tspan fill="#ff8a5c" font-weight="700">your own projects</tspan>, written in <tspan fill="#ff8a5c" font-weight="700">your own language</tspan>.</text>
 ${chipSvg}
@@ -130,7 +131,7 @@ ${chipSvg}
 <circle cx="22" cy="22" r="5" fill="#ff5f57"/><circle cx="40" cy="22" r="5" fill="#febc2e"/><circle cx="58" cy="22" r="5" fill="#28c840"/>
 <rect x="0" y="44" width="1" height="0" fill="none"/>
 <rect x="1" y="44" width="116" height="351" fill="#161b22"/>
-<text x="16" y="76" font-family="${SANS}" font-size="15" font-weight="800" fill="#f0f6fc">Dispatch</text>
+<text x="16" y="76" font-family="${SANS}" font-size="15" font-weight="800" fill="#f0f6fc">Yomu</text>
 <rect x="16" y="86" width="84" height="2" fill="#e5383b"/>
 <rect x="9" y="108" width="100" height="40" rx="3" fill="#21262d"/><rect x="9" y="108" width="3" height="40" fill="#e5383b"/>
 <rect x="20" y="118" width="46" height="5" rx="2.5" fill="#f0f6fc"/><rect class="pu" x="72" y="116" width="26" height="9" rx="2" fill="#e5383b"/>
@@ -163,7 +164,7 @@ ${lines(136, 308, [284, 268, 276, 190], '#6e7681')}
 }
 
 hero();
-header('h-why.svg', 1, 6, '理', 'Why Dispatch?');
+header('h-why.svg', 1, 6, '理', 'Why Yomu?');
 header('h-how.svg', 2, 6, '仕', 'How it works');
 header('h-start.svg', 3, 6, '始', 'Quick start');
 header('h-yours.svg', 4, 6, '個', 'Make it yours');
@@ -173,5 +174,5 @@ cards('flow.svg', [
   { kanji: '探', title: 'Scan', sub: 'your project folders' },
   { kanji: '書', title: 'Write', sub: 'Claude, on a schedule' },
   { kanji: '検', title: 'Check', sub: 'schema, links, images' },
-  { kanji: '読', title: 'Read', sub: 'the Dispatch app' },
+  { kanji: '読', title: 'Read', sub: 'the Yomu app' },
 ]);

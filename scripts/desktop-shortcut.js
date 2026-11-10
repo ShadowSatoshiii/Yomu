@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * Creates a Dispatch shortcut with its own icon on your Windows desktop.
+ * Creates a Yomu shortcut with its own icon on your Windows desktop.
  * Usage: npm run desktop [-- --out <folder>]      (default folder: your Desktop)
  * Run `npm install` first, so that Electron is present.
  */
@@ -14,7 +14,7 @@ const { spawnSync } = require('node:child_process');
 const root = path.join(__dirname, '..');
 
 if (process.platform !== 'win32') {
-  console.error('The desktop shortcut is Windows only. On macOS and Linux start Dispatch with: npm start');
+  console.error('The desktop shortcut is Windows only. On macOS and Linux start Yomu with: npm start');
   process.exit(2);
 }
 
@@ -29,15 +29,15 @@ const outFolder = outIndex > -1 ? process.argv[outIndex + 1] : null;
 
 // Paths go through environment variables, so that no path can be read as PowerShell code.
 const script = `
-$folder = if ($env:DISPATCH_OUT) { $env:DISPATCH_OUT } else { [Environment]::GetFolderPath('Desktop') }
-$link = Join-Path $folder 'Dispatch.lnk'
+$folder = if ($env:YOMU_OUT) { $env:YOMU_OUT } else { [Environment]::GetFolderPath('Desktop') }
+$link = Join-Path $folder 'Yomu.lnk'
 $shell = New-Object -ComObject WScript.Shell
 $shortcut = $shell.CreateShortcut($link)
-$shortcut.TargetPath = $env:DISPATCH_ELECTRON
-$shortcut.Arguments = '"' + $env:DISPATCH_ROOT + '"'
-$shortcut.WorkingDirectory = $env:DISPATCH_ROOT
-$shortcut.IconLocation = $env:DISPATCH_ICON
-$shortcut.Description = 'Dispatch'
+$shortcut.TargetPath = $env:YOMU_ELECTRON
+$shortcut.Arguments = '"' + $env:YOMU_ROOT + '"'
+$shortcut.WorkingDirectory = $env:YOMU_ROOT
+$shortcut.IconLocation = $env:YOMU_ICON
+$shortcut.Description = 'Yomu'
 $shortcut.Save()
 Write-Output $link
 `;
@@ -46,10 +46,10 @@ const result = spawnSync('powershell.exe', ['-NoProfile', '-NonInteractive', '-C
   encoding: 'utf8',
   env: {
     ...process.env,
-    DISPATCH_OUT: outFolder ? path.resolve(outFolder) : '',
-    DISPATCH_ELECTRON: electron,
-    DISPATCH_ROOT: root,
-    DISPATCH_ICON: path.join(root, 'build', 'icon.ico'),
+    YOMU_OUT: outFolder ? path.resolve(outFolder) : '',
+    YOMU_ELECTRON: electron,
+    YOMU_ROOT: root,
+    YOMU_ICON: path.join(root, 'build', 'icon.ico'),
   },
 });
 

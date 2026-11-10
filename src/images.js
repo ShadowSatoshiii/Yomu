@@ -82,7 +82,7 @@ async function requestPublic(url, { load = fetch, lookup = dns.lookup, headers =
     await assertPublic(current, lookup);
     const response = await load(current, {
       redirect: 'manual',
-      headers: { 'User-Agent': 'Mozilla/5.0 (Dispatch)', ...headers },
+      headers: { 'User-Agent': 'Mozilla/5.0 (Yomu)', ...headers },
       signal: AbortSignal.timeout(20_000),
     });
     const target = response.status >= 300 && response.status < 400 ? response.headers.get('location') : null;

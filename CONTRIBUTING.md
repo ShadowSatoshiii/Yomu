@@ -1,4 +1,4 @@
-# Contributing to Dispatch
+# Contributing to Yomu
 
 Ideas, bug reports and pull requests are welcome.
 
@@ -16,14 +16,14 @@ Node.js 20 or newer. If Electron does not unpack on a very new Node version, see
 
 - **A new interface language.** Copy `locales/en.json` to `locales/<code>.json`, translate the values, keep the keys. `npm test` checks that the shipped languages have exactly the same keys.
 - **A new source type** for `EDITORIAL.md`, written so that it works for any user, not only for you.
-- **macOS or Linux findings.** Dispatch is only tested on Windows so far.
+- **macOS or Linux findings.** Yomu is only tested on Windows so far.
 
 ## Ground rules
 
 - **No AI inside the app.** The editor is Claude running in the user's own session. The app only reads files, so it needs no API key and no account.
 - **No new runtime dependencies** without a good reason. `src/` and `tools/` use Node's built-in modules only.
 - **Texts live in `locales/`**, never in the code. English is the base language.
-- **Personal data stays out of the repository.** `dispatch.config.json`, `profile/profile.md`, `profile/generated.md` and `issues/` are ignored on purpose. Sample issues must be about public pages and written in your own words.
+- **Personal data stays out of the repository.** `yomu.config.json`, `profile/profile.md`, `profile/generated.md` and `issues/` are ignored on purpose. Sample issues must be about public pages and written in your own words.
 - **Add a test** for logic you add or change. Tests use Node's built-in test runner (`node --test`).
 
 ## Artwork

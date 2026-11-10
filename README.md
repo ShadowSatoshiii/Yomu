@@ -1,8 +1,10 @@
 <p align="center">
-  <img src="./assets/hero.svg" width="100%" alt="Dispatch: your personal newsroom"/>
+  <img src="./assets/hero.svg" width="100%" alt="Yomu: your personal newsroom"/>
 </p>
 
 <p align="center"><b>Your personal newsroom.</b> Claude writes a short, illustrated news issue a few times a day, picked from your own projects. A small desktop app shows it.</p>
+
+<p align="center"><sub><b>Yomu</b> (読む) is Japanese for <i>to read</i>.</sub></p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-blue.svg" alt="License: GPL-3.0"/></a>
@@ -12,15 +14,15 @@
 </p>
 
 <p align="center">
-  <img src="./docs/img/app.png" width="920" alt="The Dispatch app showing the Midday Edition"/>
+  <img src="./docs/img/app.png" width="920" alt="The Yomu app showing the Midday Edition"/>
 </p>
 
-<img src="./assets/h-why.svg" width="100%" alt="Why Dispatch?"/>
+<img src="./assets/h-why.svg" width="100%" alt="Why Yomu?"/>
 
-News feeds are the same for everybody. Dispatch is not. It reads **your own project folders** and picks the news that matters to what *you* build.
+News feeds are the same for everybody. Yomu is not. It reads **your own project folders** and picks the news that matters to what *you* build.
 
 - **Made from your projects.** The editor looks at your READMEs, manifest files and agent instruction files, and writes an honest line for every item: *why it matters to you*. If there is no link to your work, it says so.
-- **Works with whatever you work with.** Claude Code, Cursor, Windsurf, Copilot or a plain editor: Dispatch does not hook into your tool. It reads your project folders, so the news follows your projects, not your editor.
+- **Works with whatever you work with.** Claude Code, Cursor, Windsurf, Copilot or a plain editor: Yomu does not hook into your tool. It reads your project folders, so the news follows your projects, not your editor.
 - **Claude is the editor, the app only shows.** Scheduled Claude runs write each issue as a small JSON file. The app has no AI inside: no API key, no account, no backend.
 - **Short on purpose.** One lead story and a few briefs, with images, in plain language, about five minutes to read. Built so you actually read it every day.
 - **Yours in every way.** Language, schedule, sources, length and tone are plain files. Change them by hand or just ask Claude.
@@ -30,7 +32,7 @@ News feeds are the same for everybody. Dispatch is not. It reads **your own proj
 | **Magazine view** | Lead story, numbered briefs, images, reading progress bar, archive sidebar, light paper look |
 | **Issues** | One file per issue (`YYYY-MM-DD-HHMM.json`), three a day by default, a `NEW` badge, and a notice when a scheduled issue is still missing |
 | **Images** | Linked in the issue, cached on disk after the first view, so old issues stay readable offline |
-| **Personal** | `dispatch.config.json`, your own `profile.md` and an automatic scan of your project folders |
+| **Personal** | `yomu.config.json`, your own `profile.md` and an automatic scan of your project folders |
 | **Languages** | The issues can be written in any language Claude writes. The interface ships in English and German and is easy to extend |
 | **Quality checks** | `npm run check` validates the schema, rejects repeated links and tests every image before an issue counts |
 | **Plain files** | JSON for the app and a Markdown copy of every issue for any editor or notes tool |
@@ -52,13 +54,13 @@ News feeds are the same for everybody. Dispatch is not. It reads **your own proj
                                                                  │
                                           issues/2026-11-11-0800.json
                                                                  ▼
-                                                   Dispatch app (Electron)
+                                                   Yomu app (Electron)
 ```
 
 | Piece | Job |
 | --- | --- |
 | [`EDITORIAL.md`](EDITORIAL.md) | The standing instruction for the editor. Plain Markdown, edit it to change the voice |
-| `dispatch.config.json` | Language, schedule, length, sources, interests, project folders |
+| `yomu.config.json` | Language, schedule, length, sources, interests, project folders |
 | `npm run scan` | Reads your project folders and writes `profile/generated.md` |
 | `npm run check` | Validates the issue the editor just wrote and writes its Markdown copy |
 | `npm run reported` | Lists links from the last days so the editor does not repeat itself |
@@ -69,8 +71,8 @@ News feeds are the same for everybody. Dispatch is not. It reads **your own proj
 You need [Node.js](https://nodejs.org) 20 or newer.
 
 ```bash
-git clone https://github.com/ShadowSatoshiii/Dispatch.git
-cd Dispatch
+git clone https://github.com/ShadowSatoshiii/Yomu.git
+cd Yomu
 npm install
 npm start
 ```
@@ -80,12 +82,12 @@ The app opens with two sample issues and says so at the top. Your first real iss
 **Make it yours in three steps:**
 
 ```bash
-cp dispatch.config.example.json dispatch.config.json      # your settings
-npm run scan -- "C:\code\my-shop" "C:\code\my-cli"          # optional: let Dispatch learn what you build
+cp yomu.config.example.json yomu.config.json      # your settings
+npm run scan -- "C:\code\my-shop" "C:\code\my-cli"          # optional: let Yomu learn what you build
 npm run schedule                                           # prints the cron line and the prompt for the scheduled task
 ```
 
-On Windows, `npm run desktop` also puts a **Dispatch** shortcut with its own icon on your desktop.
+On Windows, `npm run desktop` also puts a **Yomu** shortcut with its own icon on your desktop.
 
 **Try it without a schedule.** Open Claude in this folder and say: *"Follow EDITORIAL.md and write the next issue."* Claude researches, writes `issues/<id>.json` and runs the check.
 
@@ -93,7 +95,7 @@ On Windows, `npm run desktop` also puts a **Dispatch** shortcut with its own ico
 
 ### Settings
 
-Everything lives in `dispatch.config.json` (copy it from `dispatch.config.example.json`). The file is not committed to Git. Restart the app after you change it.
+Everything lives in `yomu.config.json` (copy it from `yomu.config.example.json`). The file is not committed to Git. Restart the app after you change it.
 
 | Setting | Default | What it does |
 | --- | --- | --- |
@@ -109,7 +111,7 @@ Everything lives in `dispatch.config.json` (copy it from `dispatch.config.exampl
 
 ### Your profile
 
-`dispatch` reads two files in `profile/`:
+`yomu` reads two files in `profile/`:
 
 - **`profile.md`** is written by you: what you build, what you want to hear about, what you do not care about, your tone. Start from [`profile/profile.example.md`](profile/profile.example.md). It wins over everything generated.
 - **`generated.md`** is written by `npm run scan` from your project folders: language and dependencies from manifest files (`package.json`, `requirements.txt`, `Cargo.toml`, `go.mod` and more), which AI tools a project uses, and the start of the README and the agent instruction file.
@@ -118,7 +120,7 @@ The scan reads only those files. It never opens `.env` files, removes credential
 
 ### Ask Claude
 
-All of this is plain files, so personalising Dispatch is a normal conversation with Claude. Open Claude in this folder and say things like:
+All of this is plain files, so personalising Yomu is a normal conversation with Claude. Open Claude in this folder and say things like:
 
 > *Add my two projects in `C:\code\my-shop` and `C:\code\my-cli` to the config and run the scan.*
 >
@@ -130,7 +132,7 @@ All of this is plain files, so personalising Dispatch is a normal conversation w
 >
 > *Only give me news about Rust and local AI tools.*
 
-Claude edits `dispatch.config.json`, `profile/profile.md` or `EDITORIAL.md` for you. The next scheduled run follows the new rules.
+Claude edits `yomu.config.json`, `profile/profile.md` or `EDITORIAL.md` for you. The next scheduled run follows the new rules.
 
 <img src="./assets/h-language.svg" width="100%" alt="Your language"/>
 
@@ -170,10 +172,10 @@ A few honest notes:
 
 ## Privacy
 
-- Dispatch has **no server, no account and no telemetry**. Issues are files in your `issues` folder.
+- Yomu has **no server, no account and no telemetry**. Issues are files in your `issues` folder.
 - The app makes network requests only to load the images that an issue links to, and only to public web addresses (addresses on your own machine or network are refused).
-- The editor, which is Claude running in your own session, reads `dispatch.config.json`, your profile and the research pages. Read `profile/generated.md` once before the first run and delete what you do not want used.
-- `dispatch.config.json`, `profile/profile.md`, `profile/generated.md` and `issues/` are in `.gitignore`, so your personal feed does not end up in a public repository by accident.
+- The editor, which is Claude running in your own session, reads `yomu.config.json`, your profile and the research pages. Read `profile/generated.md` once before the first run and delete what you do not want used.
+- `yomu.config.json`, `profile/profile.md`, `profile/generated.md` and `issues/` are in `.gitignore`, so your personal feed does not end up in a public repository by accident.
 
 ## Project layout
 
@@ -196,7 +198,7 @@ A few honest notes:
 - **The app shows sample issues.** No real issue exists yet. Run the editor once (see *Try it without a schedule*).
 - **A run wrote nothing.** Check whether the usage limit of your Claude plan was reached, then run it again.
 - **Notifications.** New-issue notifications use Electron's notification API. They are not verified on every system.
-- **macOS and Linux.** Electron is cross-platform and `npm start` should work, but Dispatch has only been tested on Windows. The desktop shortcut and the Electron repair are Windows only.
+- **macOS and Linux.** Electron is cross-platform and `npm start` should work, but Yomu has only been tested on Windows. The desktop shortcut and the Electron repair are Windows only.
 
 ## Roadmap
 
@@ -210,7 +212,7 @@ Ideas and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Credits & license
 
-Dispatch is free software, licensed under the **GNU General Public License v3.0**. See [LICENSE](LICENSE).
+Yomu is free software, licensed under the **GNU General Public License v3.0**. See [LICENSE](LICENSE).
 
 Built with [Electron](https://www.electronjs.org) (MIT). The fonts [Archivo](https://fonts.google.com/specimen/Archivo), [Newsreader](https://fonts.google.com/specimen/Newsreader) and [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) are licensed under the SIL Open Font License 1.1, see [`app/ui/fonts/OFL.txt`](app/ui/fonts/OFL.txt). The logo and the README artwork are drawn from code (`scripts/make-assets.js` and `scripts/make-readme-art.js`). The pixel cat in `app/ui/assets` was supplied by the author.
 

@@ -20,7 +20,7 @@ function toCron(times) {
 /** The prompt to paste into a scheduled task. It is deliberately short: the real rules live in EDITORIAL.md. */
 function taskPrompt(folder) {
   return [
-    'You are the editor of my Dispatch news magazine.',
+    'You are the editor of my Yomu news magazine.',
     '',
     `Project folder: ${folder}`,
     'Work only inside this folder. Read EDITORIAL.md there completely and follow it to write exactly one new issue now.',

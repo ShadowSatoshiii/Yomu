@@ -10,13 +10,13 @@ const { loadStrings } = require('../src/strings');
 
 const ROOT = path.join(__dirname, '..');
 
-// Settings are read fresh on every request, so edits to dispatch.config.json
+// Settings are read fresh on every request, so edits to yomu.config.json
 // show up without code changes. Texts and language need a restart.
 function settings() {
   const { config, warnings } = loadConfig(ROOT);
   // For documentation screenshots and tests: point the app at another issues folder.
-  if (process.env.DISPATCH_ISSUES_DIR) config.issuesPath = path.resolve(process.env.DISPATCH_ISSUES_DIR);
-  warnings.forEach((warning) => console.warn(`dispatch: ${warning}`));
+  if (process.env.YOMU_ISSUES_DIR) config.issuesPath = path.resolve(process.env.YOMU_ISSUES_DIR);
+  warnings.forEach((warning) => console.warn(`yomu: ${warning}`));
   return config;
 }
 
@@ -28,7 +28,7 @@ function createWindow() {
     height: 880,
     minWidth: 420,
     minHeight: 520,
-    title: 'Dispatch',
+    title: 'Yomu',
     icon: path.join(ROOT, 'build', 'icon.png'),
     backgroundColor: '#f3eee4',
     autoHideMenuBar: true,
@@ -73,18 +73,18 @@ if (!app.requestSingleInstanceLock()) {
   app.quit();
 } else {
   app.on('second-instance', focusWindow);
-  app.setAppUserModelId('dev.dispatch.app');
+  app.setAppUserModelId('dev.yomu.app');
   app.whenReady().then(() => {
     createWindow();
     // Used to create the screenshot in the README: capture the window, then quit.
-    const shot = process.env.DISPATCH_SCREENSHOT;
+    const shot = process.env.YOMU_SCREENSHOT;
     if (shot) {
       window.webContents.once('did-finish-load', () => {
         setTimeout(async () => {
           fs.mkdirSync(path.dirname(path.resolve(shot)), { recursive: true });
           fs.writeFileSync(shot, (await window.webContents.capturePage()).toPNG());
           app.quit();
-        }, Number(process.env.DISPATCH_SCREENSHOT_DELAY_MS) || 6000);
+        }, Number(process.env.YOMU_SCREENSHOT_DELAY_MS) || 6000);
       });
     }
   });

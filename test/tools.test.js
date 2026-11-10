@@ -12,7 +12,7 @@ const { toMarkdown } = require('../src/markdown');
 const { scanProject, renderProfile, clean } = require('../src/scan');
 
 const ROOT = path.join(__dirname, '..');
-const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'dispatch-'));
+const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'yomu-'));
 
 function issue(url = 'https://example.com/a', extra = {}) {
   return {

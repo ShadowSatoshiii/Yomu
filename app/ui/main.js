@@ -1,8 +1,8 @@
 'use strict';
 
-// Inside the app, preload.js provides window.dispatch. Without it (viewing this
+// Inside the app, preload.js provides window.yomu. Without it (viewing this
 // page in a browser while developing) the data comes from dev-data.json.
-const api = window.dispatch ?? {
+const api = window.yomu ?? {
   config: async () => (await (await fetch('dev-data.json')).json()).config,
   issues: async () => {
     const { issues, sample } = await (await fetch('dev-data.json')).json();
@@ -16,7 +16,7 @@ const api = window.dispatch ?? {
 const WORDS_PER_MINUTE = 200;
 const POLL_MS = 60_000;
 const GRACE_MINUTES = 30; // how long a run may take after its scheduled time
-const REMEMBER = 'dispatch.lastSeen';
+const REMEMBER = 'yomu.lastSeen';
 const EASE = 'cubic-bezier(.2,.7,.2,1)';
 const CALM = matchMedia('(prefers-reduced-motion: reduce)');
 

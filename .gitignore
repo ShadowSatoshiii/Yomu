@@ -2,7 +2,7 @@
 node_modules/
 
 # Your personal setup and your personal feed stay on your machine
-dispatch.config.json
+yomu.config.json
 profile/profile.md
 profile/generated.md
 issues/

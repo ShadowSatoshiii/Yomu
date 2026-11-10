@@ -22,8 +22,8 @@ test('schedule: different minutes need separate lines', () => {
 });
 
 test('schedule: the prompt names the folder and points at EDITORIAL.md', () => {
-  const prompt = taskPrompt('C:/Dispatch');
-  assert.match(prompt, /Project folder: C:\/Dispatch/);
+  const prompt = taskPrompt('C:/Yomu');
+  assert.match(prompt, /Project folder: C:\/Yomu/);
   assert.match(prompt, /EDITORIAL\.md/);
 });
 

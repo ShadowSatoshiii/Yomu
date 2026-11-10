@@ -34,20 +34,20 @@ function textList(value) {
 }
 
 /**
- * Reads dispatch.config.json from the project root and fills in defaults.
+ * Reads yomu.config.json from the project root and fills in defaults.
  * Never throws: a missing or broken file yields the defaults plus a warning,
  * so the app and the tools keep working.
  */
 function loadConfig(root) {
   const warnings = [];
-  const file = path.join(root, 'dispatch.config.json');
+  const file = path.join(root, 'yomu.config.json');
   let user = {};
   try {
     const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
     if (isObject(parsed)) user = parsed;
-    else warnings.push('dispatch.config.json must contain a JSON object. Using defaults.');
+    else warnings.push('yomu.config.json must contain a JSON object. Using defaults.');
   } catch (error) {
-    if (error.code !== 'ENOENT') warnings.push(`dispatch.config.json could not be read (${error.message}). Using defaults.`);
+    if (error.code !== 'ENOENT') warnings.push(`yomu.config.json could not be read (${error.message}). Using defaults.`);
   }
 
   const config = merge(DEFAULTS, user);

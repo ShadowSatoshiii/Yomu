@@ -12,7 +12,7 @@ const { getImage, requestPublic, isFetchableUrl, isLocalAddress } = require('../
 const { loadStrings } = require('../src/strings');
 
 const ROOT = path.join(__dirname, '..');
-const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'dispatch-'));
+const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'yomu-'));
 
 function goodIssue(overrides = {}) {
   return {
@@ -39,7 +39,7 @@ test('config: without a file the defaults apply and nothing warns', () => {
 
 test('config: user values override defaults, nested values merge', () => {
   const root = tmp();
-  fs.writeFileSync(path.join(root, 'dispatch.config.json'), JSON.stringify({
+  fs.writeFileSync(path.join(root, 'yomu.config.json'), JSON.stringify({
     language: 'German', schedule: ['19:00', '07:30'], sources: { hackerNews: false },
   }));
   const { config, warnings } = loadConfig(root);
@@ -53,9 +53,9 @@ test('config: user values override defaults, nested values merge', () => {
 
 test('config: a broken file or bad values fall back to defaults with a warning', () => {
   const root = tmp();
-  fs.writeFileSync(path.join(root, 'dispatch.config.json'), '{ not json');
+  fs.writeFileSync(path.join(root, 'yomu.config.json'), '{ not json');
   assert.equal(loadConfig(root).warnings.length, 1);
-  fs.writeFileSync(path.join(root, 'dispatch.config.json'), JSON.stringify({ schedule: ['25:99'], items: { min: 5, max: 2 } }));
+  fs.writeFileSync(path.join(root, 'yomu.config.json'), JSON.stringify({ schedule: ['25:99'], items: { min: 5, max: 2 } }));
   const { config, warnings } = loadConfig(root);
   assert.equal(warnings.length, 2);
   assert.deepEqual(config.schedule, DEFAULTS.schedule);

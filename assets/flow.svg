@@ -28,4 +28,4 @@
  <text x="22" y="62" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="44" font-weight="800" fill="none" stroke="#e5383b" stroke-width="1.2">04</text>
  <text x="22" y="62" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="44" font-weight="800" fill="url(#gl)" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.750;0.787;0.962;1.000;1" dur="8s" repeatCount="indefinite"/>04</text>
  <text x="22" y="102" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,sans-serif" font-size="22" font-weight="700" fill="#f0f6fc">Read</text>
- <text x="22" y="126" font-family="ui-monospace,'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="12.5" fill="#9198a1">the Dispatch app</text></g></svg>
+ <text x="22" y="126" font-family="ui-monospace,'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="12.5" fill="#9198a1">the Yomu app</text></g></svg>

@@ -66,12 +66,12 @@ console.log(`Unpacking ${archive} ...`);
 fs.mkdirSync(dist, { recursive: true });
 const result = spawnSync('powershell.exe', [
   '-NoProfile', '-NonInteractive', '-Command',
-  'Expand-Archive -LiteralPath $env:DISPATCH_ZIP -DestinationPath $env:DISPATCH_DIST -Force',
-], { encoding: 'utf8', env: { ...process.env, DISPATCH_ZIP: archive, DISPATCH_DIST: dist } });
+  'Expand-Archive -LiteralPath $env:YOMU_ZIP -DestinationPath $env:YOMU_DIST -Force',
+], { encoding: 'utf8', env: { ...process.env, YOMU_ZIP: archive, YOMU_DIST: dist } });
 
 if (result.status !== 0 || !fs.existsSync(path.join(dist, 'electron.exe'))) {
   console.error(`Unpacking failed: ${(result.stderr || result.stdout).trim()}`);
   process.exit(1);
 }
 fs.writeFileSync(path.join(electronFolder, 'path.txt'), 'electron.exe');
-console.log('Done. Start Dispatch with: npm start');
+console.log('Done. Start Yomu with: npm start');

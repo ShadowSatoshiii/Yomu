@@ -7,7 +7,7 @@
  * matter which AI tool or editor you work in.
  *
  * Usage: npm run scan [-- <folder> <folder> ...] [--dry-run]
- *   Without folders, the "projects" list in dispatch.config.json is used.
+ *   Without folders, the "projects" list in yomu.config.json is used.
  *   --dry-run prints the result instead of writing the file.
  */
 
@@ -25,7 +25,7 @@ warnings.forEach((w) => console.warn(`warning: ${w}`));
 
 const list = folders.length ? folders : config.projects;
 if (list.length === 0) {
-  console.error('No project folders given.\nAdd them to "projects" in dispatch.config.json, or run: npm run scan -- <folder> [<folder> ...]');
+  console.error('No project folders given.\nAdd them to "projects" in yomu.config.json, or run: npm run scan -- <folder> [<folder> ...]');
   process.exit(2);
 }
 

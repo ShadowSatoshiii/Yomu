@@ -1,4 +1,4 @@
-# Dispatch editorial guide
+# Yomu editorial guide
 
 This file is the standing instruction for the AI editor (Claude). Every scheduled run reads it first and follows it to write **exactly one new issue**.
 
@@ -12,7 +12,7 @@ The reader should enjoy reading the issue every day. So: short, illustrated, in 
 
 ## What to read first
 
-1. `dispatch.config.json`. If it is missing, use the values in `dispatch.config.example.json` as the defaults and do not create the file. It sets the **language** of the issue, the **schedule**, how many **items** an issue has, the **sources** and the **interests**.
+1. `yomu.config.json`. If it is missing, use the values in `yomu.config.example.json` as the defaults and do not create the file. It sets the **language** of the issue, the **schedule**, how many **items** an issue has, the **sources** and the **interests**.
 2. `profile/profile.md`, if it exists. It is written by the reader and **wins over everything generated**.
 3. `profile/generated.md`, if it exists. It is what `npm run scan` found in the reader's own project folders: stacks, dependencies, which AI tools are used, what the READMEs say. Use it to judge what is relevant.
 

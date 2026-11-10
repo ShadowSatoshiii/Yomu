@@ -1,5 +1,5 @@
 {
-  "name": "dispatch",
+  "name": "yomu",
   "version": "0.1.0",
   "description": "Your personal newsroom. Claude writes a short, illustrated news issue a few times a day, derived from your own projects. A small desktop app shows it.",
   "license": "GPL-3.0-only",

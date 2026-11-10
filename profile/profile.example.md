@@ -1,6 +1,6 @@
 # My profile
 
-Copy this file to `profile.md` in the same folder and make it yours. Dispatch reads `profile.md`; it is not committed to Git. What you write here wins over the automatically generated `generated.md`.
+Copy this file to `profile.md` in the same folder and make it yours. Yomu reads `profile.md`; it is not committed to Git. What you write here wins over the automatically generated `generated.md`.
 
 ## What I build
 

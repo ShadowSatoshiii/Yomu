@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * Generates the small original artwork that ships with Dispatch:
+ * Generates the small original artwork that ships with Yomu:
  *   assets/icon.svg                        the logo used in the README
  *   build/icon.png, build/icon.ico         the app and shortcut icon
  * Drawn from code, so the logo needs no image file as a source.
@@ -23,22 +23,32 @@ const write = (rel, data) => {
 
 // --- the logo ---------------------------------------------------------------
 
-const D_PATH = 'M30 26H52A24 24 0 0 1 52 74H30ZM42 38H52A12 12 0 0 1 52 62H42Z';
+const LOGO_PATH = 'M28 26H40L50 43L60 26H72L56 52V74H44V52Z';
 write('assets/icon.svg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
 <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e5383b"/><stop offset="1" stop-color="#ff8a5c"/></linearGradient></defs>
 <rect width="100" height="100" rx="22" fill="url(#g)"/>
-<path fill="#fff" fill-rule="evenodd" d="${D_PATH}"/>
+<path fill="#fff" d="${LOGO_PATH}"/>
 </svg>
 `);
+
+const LOGO_POINTS = [[28, 26], [40, 26], [50, 43], [60, 26], [72, 26], [56, 52], [56, 74], [44, 74], [44, 52]];
+
+function inPolygon(x, y, points) {
+  let inside = false;
+  for (let i = 0, j = points.length - 1; i < points.length; j = i, i += 1) {
+    const [xi, yi] = points[i];
+    const [xj, yj] = points[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
 
 function insideLogo(x, y) {
   const r = 22;
   const cx = Math.min(Math.max(x, r), 100 - r);
   const cy = Math.min(Math.max(y, r), 100 - r);
   if ((x - cx) ** 2 + (y - cy) ** 2 > r * r) return null;
-  const outer = (x >= 30 && x <= 52 && y >= 26 && y <= 74) || (x > 52 && ((x - 52) / 24) ** 2 + ((y - 50) / 24) ** 2 <= 1);
-  const inner = (x >= 42 && x <= 52 && y >= 38 && y <= 62) || (x > 52 && ((x - 52) / 12) ** 2 + ((y - 50) / 12) ** 2 <= 1);
-  if (outer && !inner) return [255, 255, 255];
+  if (inPolygon(x, y, LOGO_POINTS)) return [255, 255, 255];
   const t = (x + y) / 200;
   return [Math.round(229 + (255 - 229) * t), Math.round(56 + (138 - 56) * t), Math.round(59 + (92 - 59) * t)];
 }
