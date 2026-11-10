@@ -1,0 +1,15 @@
+{
+  "language": "English",
+  "uiLanguage": "auto",
+  "userName": "",
+  "schedule": ["08:00", "13:00", "19:00"],
+  "issuesDir": "issues",
+  "items": { "min": 4, "max": 6 },
+  "sources": {
+    "githubTrending": true,
+    "hackerNews": true,
+    "extra": []
+  },
+  "projects": [],
+  "interests": []
+}

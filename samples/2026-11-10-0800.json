@@ -1,0 +1,58 @@
+{
+  "id": "2026-11-10-0800",
+  "date": "2026-11-10",
+  "time": "08:00",
+  "name": "Morning Edition",
+  "items": [
+    {
+      "kind": "lead",
+      "title": "anthropics/skills: Anthropic's official collection of skills for Claude",
+      "summary": "Anthropic keeps a public directory of \"Agent Skills\" on GitHub. A skill is a folder with a SKILL.md file that holds instructions, scripts and helper material for a recurring task. Claude loads it only when it is needed. The collection contains examples for design, development and communication, plus the document skills for docx, pdf, pptx and xlsx, the specification, and a template for writing your own. In Claude Code you install it with \"/plugin marketplace add anthropics/skills\". The catch: according to the README the skills are meant as demonstrations, behavior can differ from what you expect, and the license (mostly Apache 2.0) should be checked per skill.",
+      "why_it_matters": "If you already work with skills, this repository is the reference and the template for writing more of your own.",
+      "image": "https://opengraph.githubassets.com/1/anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "source": "github",
+      "signal": "+1,038 stars today, 191,670 in total"
+    },
+    {
+      "kind": "brief",
+      "title": "claude-mem gives coding agents a memory across sessions",
+      "summary": "The plugin records what the agent does in a session and condenses it with a second AI observer into short notes. At the start of a new session the agent receives a compact index of the matching notes. Everything is stored locally in a SQLite database. The catch: the observer needs a model, and the options include a paid trial, your own keys or your Anthropic plan. Anonymous statistics are on by default, and on Windows the setup may need PATH fixes.",
+      "why_it_matters": "Worth a look for long projects, but a notes file in the project already gives you a simple memory. Treat this as an add-on, not a must.",
+      "image": "https://opengraph.githubassets.com/1/thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "source": "github",
+      "signal": "+5,130 stars this week, 115,581 in total"
+    },
+    {
+      "kind": "brief",
+      "title": "mattpocock/skills: ask first, test first, clean up after",
+      "summary": "Matt Pocock published the skills he uses with coding agents, under the MIT license. With \"/grill-me\" the agent interviews you before a change so it does not build the wrong thing. Other skills enforce tests before code (\"/tdd\"), help with debugging and suggest architecture improvements. For Claude Code it installs as a plugin or with npx.",
+      "why_it_matters": "The question-first skills can sharpen an idea before any code exists, and they combine well with other skill collections.",
+      "image": "https://opengraph.githubassets.com/1/mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "source": "github",
+      "signal": "+9,800 stars this week, 320,233 in total"
+    },
+    {
+      "kind": "brief",
+      "title": "agent-browser: browser control for AI agents from the command line",
+      "summary": "This Rust program from Vercel Labs lets an agent operate a browser step by step with commands. A \"snapshot\" returns the page as short text in which every element has an id such as @e1; the agent then clicks or types on that id. There are Windows x64 binaries, an Apache-2.0 license and an MCP server. The catch: ids are only valid for the snapshot they came from, and a banner over the target makes clicks fail.",
+      "why_it_matters": "It would let an agent test your own web app in a real browser. It does not replace browser tools you may already have.",
+      "image": "https://opengraph.githubassets.com/1/vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "source": "github",
+      "signal": "+916 stars today, 48,844 in total"
+    },
+    {
+      "kind": "brief",
+      "title": "NVIDIA Auto Ontology: ask databases questions in plain language",
+      "summary": "The framework builds a layer of meaning, with terms and relations, from database metadata. An agent then translates questions into SQL and shows the steps. It runs with Docker and has a web interface, an MCP server and a REST interface. The catch: by default it needs NVIDIA model access with an API key, drafts must be reviewed by people, and two ports have no sign-in of their own.",
+      "why_it_matters": "No direct link to most personal projects, since it targets company databases. Still worth knowing as a trend.",
+      "image": "https://opengraph.githubassets.com/1/NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "source": "github",
+      "signal": "+10,159 stars this week, 11,246 in total"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self'; script-src 'self'">
+  <title>Dispatch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="progress"><div id="progress-bar"></div></div>
+  <div class="layout">
+    <aside class="archive">
+      <h1 id="app-name">Dispatch</h1>
+      <p class="archive-title" id="archive-title"></p>
+      <nav id="list"></nav>
+    </aside>
+    <main>
+      <p id="notice" class="notice" hidden></p>
+      <div id="issue"></div>
+    </main>
+  </div>
+  <div id="cat-stage" class="cat-stage" hidden>
+    <div id="bubble-slot"></div>
+    <button id="cat-button" class="cat-button" type="button">
+      <span id="cat-body" class="cat-body">
+        <img src="assets/cat.png" alt="" draggable="false">
+        <img id="cat-open" class="cat-open" src="assets/cat-open.png" alt="" draggable="false">
+      </span>
+      <span id="cat-shadow" class="cat-shadow"></span>
+    </button>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

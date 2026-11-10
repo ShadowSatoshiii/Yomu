@@ -1,0 +1,58 @@
+{
+  "id": "2026-11-10-1300",
+  "date": "2026-11-10",
+  "time": "13:00",
+  "name": "Midday Edition",
+  "items": [
+    {
+      "kind": "lead",
+      "title": "Google makes Gemini 4 Carbon available to all paying developers",
+      "summary": "On November 10 Google released its strongest model, Gemini 4 Carbon. It is meant for hard tasks such as multi-step coding, debugging and scientific research, and it uses more tokens than its sibling Gemini 4 Argon, which Google says remains the right choice for most work. According to Google, Carbon ranks first on CursorBench 4.0, Perplexity's WANDR and Zapier's AutomationBench, at less than half the cost per task of the next best external model. Through the API it costs the same introductory price as Argon: 2 dollars per million input tokens and 10 dollars per million output tokens. Ultra subscribers get it in the Gemini app and in Google's Antigravity, where a /swarm preview spreads one job over several agents. The catch: all top scores are Google's own claims, and some of the benchmarks come from companies that sell products in this area.",
+      "why_it_matters": "No action needed if you already have a model you like. The prices show how fast the top end of the market is moving.",
+      "image": "https://storage.googleapis.com/gweb-uniblog-publish-prod/images/gemini_4_carbon_key_art_16-9_lockup.width-1300.jpg",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
+      "source": "hn",
+      "signal": "37 points on Hacker News, posted November 10"
+    },
+    {
+      "kind": "brief",
+      "title": "billion-context: a middle layer that aims to make AI sessions endless",
+      "summary": "The plugin sits between an AI agent and the model's API and rewrites the conversation history on the fly into compact summaries. The model itself decides when and what to compress. According to the README, 100,000 tokens of context are enough, up to five times fewer tokens are used, and sessions can run for a month. The evidence, a 4.5-month study and its own comparison tests, comes from the author. It installs with npm. The catch: the license is not clearly stated on GitHub.",
+      "why_it_matters": "Interesting if your agent sessions get very long, but a proxy at the API layer is a bigger intervention than a notes file in the project.",
+      "image": "https://opengraph.githubassets.com/1/ranxianglei/billion-context",
+      "url": "https://github.com/ranxianglei/billion-context",
+      "source": "github",
+      "signal": "+374 stars today, 6,099 in total"
+    },
+    {
+      "kind": "brief",
+      "title": "Hex: dictate by voice, and nothing leaves your machine",
+      "summary": "You hold a key, speak, let go, and the text is pasted into whatever app is open. Recognition runs on your own device. On first start Hex downloads a speech model; after that, according to the README, nothing goes to the internet. There is an installer for Windows (x64 and ARM64) as well as Mac and Linux versions. License: MIT. The catch: the developers do not accept pull requests, bugs and wishes go through issues only.",
+      "why_it_matters": "A free, local way to dictate prompts to your coding agent on Windows.",
+      "image": "https://opengraph.githubassets.com/1/anomalyco/hex",
+      "url": "https://github.com/anomalyco/hex",
+      "source": "github",
+      "signal": "+2,031 stars this week, 6,114 in total"
+    },
+    {
+      "kind": "brief",
+      "title": "Topcoat: a Rust toolkit for complete web apps",
+      "summary": "Topcoat, from the Tokio team, assembles pages on the server. Components may query the database directly, so no separate API layer is needed. Small interactive steps in the browser are also written in Rust and translated to JavaScript, which means no wasm and no extra build step for the browser part. License: MIT. The catch: according to the README it is early and experimental, so expect frequent changes.",
+      "why_it_matters": "Only relevant if you build web apps in Rust.",
+      "image": "https://opengraph.githubassets.com/1/tokio-rs/topcoat",
+      "url": "https://github.com/tokio-rs/topcoat",
+      "source": "github",
+      "signal": "+192 stars today, 6,664 in total"
+    },
+    {
+      "kind": "brief",
+      "title": "Your TV can see through walls",
+      "summary": "A blogger records the signal of a digital TV station with a radio receiver. When he walks around the room, stripes appear in the signal picture, because his body reflects the signal and it overlaps with the direct one. From the spacing of the stripes he reads his walking speed: 1.3 meters per second, or 4.6 kilometers per hour, even through a wall. According to him the same principle works with any wideband radio signal, including Wi-Fi and mobile networks. The post dates from 2025 and is being discussed on Hacker News again.",
+      "why_it_matters": "No link to your projects, just a vivid example of what radio waves reveal about a room.",
+      "image": null,
+      "url": "https://maurycyz.com/projects/fading/",
+      "source": "blog",
+      "signal": "229 points and 100 comments on Hacker News"
+    }
+  ]
+}

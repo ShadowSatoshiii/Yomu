@@ -1,0 +1,42 @@
+{
+  "appName": "Dispatch",
+  "issues": "Ausgaben",
+  "newBadge": "NEU",
+  "sources": "Quellen: {sources}",
+  "issueOf": "Ausgabe {n} von {total}",
+  "clock": "Uhr",
+  "itemCount": "Meldungen",
+  "readTime": "Lesezeit",
+  "minutes": "{n} Min.",
+  "minutesRead": "{n} Min. Lesezeit",
+  "lead": "Titelstory",
+  "whyLead": "Warum das für dich zählt",
+  "whyBrief": "Für dich: ",
+  "readOriginal": "Zum Original",
+  "read": "Lesen",
+  "noImage": "Kein Bild in der Quelle",
+  "imageFailed": "Bild nicht ladbar",
+  "empty": "Noch keine Ausgabe vorhanden. Die Redaktion schreibt um {times}.",
+  "sampleNotice": "Das sind Beispielausgaben. Sobald die Redaktion deine erste echte Ausgabe geschrieben hat, ersetzt sie diese.",
+  "endOf": "Ende der {name}",
+  "footer": "Die Redaktion schreibt um {times}",
+  "missing": "Die Ausgabe von {date}, {time} fehlt noch. Sie wird nachgeholt, sobald die geplante Aufgabe läuft.",
+  "notifyTitle": "{app}: {name} ist da",
+  "notifyBody": "{n} Meldungen",
+  "sourceNames": {
+    "github": "GitHub",
+    "hn": "Hacker News",
+    "blog": "Blog",
+    "other": "Web"
+  },
+  "cat": {
+    "hello": "Moin! Die {name} ist da.",
+    "helloNamed": "Moin {user}! Die {name} ist da.",
+    "lead": "Titelstory: {title}",
+    "count": "{n} Meldungen warten auf dich.",
+    "idle": "Ich laufe hier nur Streife. Lies ruhig weiter.",
+    "fresh": "Frisch eingetroffen: die {name}!",
+    "label": "Katze: Ausgabe ansagen",
+    "title": "Klick mich"
+  }
+}

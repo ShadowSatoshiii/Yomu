@@ -1,0 +1,26 @@
+{
+  "name": "dispatch",
+  "version": "0.1.0",
+  "description": "Your personal newsroom. Claude writes a short, illustrated news issue a few times a day, derived from your own projects. A small desktop app shows it.",
+  "license": "GPL-3.0-only",
+  "main": "app/main.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "electron .",
+    "desktop": "node scripts/desktop-shortcut.js",
+    "schedule": "node scripts/print-schedule.js",
+    "fix-electron": "node scripts/fix-electron.js",
+    "scan": "node tools/scan-projects.js",
+    "check": "node tools/check-issue.js",
+    "reported": "node tools/reported.js",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0"
+  },
+  "allowScripts": {
+    "electron": true
+  }
+}

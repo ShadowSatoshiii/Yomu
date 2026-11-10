@@ -1,0 +1,42 @@
+{
+  "appName": "Dispatch",
+  "issues": "Issues",
+  "newBadge": "NEW",
+  "sources": "Sources: {sources}",
+  "issueOf": "Issue {n} of {total}",
+  "clock": "Time",
+  "itemCount": "Items",
+  "readTime": "Read time",
+  "minutes": "{n} min",
+  "minutesRead": "{n} min read",
+  "lead": "Lead story",
+  "whyLead": "Why it matters to you",
+  "whyBrief": "For you: ",
+  "readOriginal": "Read the original",
+  "read": "Read",
+  "noImage": "No image in the source",
+  "imageFailed": "Image could not be loaded",
+  "empty": "No issues yet. The editor writes them at {times}.",
+  "sampleNotice": "These are sample issues. Your first real issue replaces them as soon as the editor has written it.",
+  "endOf": "End of the {name}",
+  "footer": "The editor writes at {times}",
+  "missing": "The issue of {date}, {time} is still missing. It is caught up as soon as the scheduled task runs.",
+  "notifyTitle": "{app}: {name} is here",
+  "notifyBody": "{n} items",
+  "sourceNames": {
+    "github": "GitHub",
+    "hn": "Hacker News",
+    "blog": "Blog",
+    "other": "Web"
+  },
+  "cat": {
+    "hello": "Hi! The {name} is here.",
+    "helloNamed": "Hi {user}! The {name} is here.",
+    "lead": "Lead story: {title}",
+    "count": "{n} items are waiting for you.",
+    "idle": "I'm just patrolling. Keep reading.",
+    "fresh": "Fresh off the press: the {name}!",
+    "label": "Cat: read out the issue",
+    "title": "Click me"
+  }
+}
