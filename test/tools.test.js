@@ -24,6 +24,7 @@ function issue(url = 'https://example.com/a', extra = {}) {
   };
 }
 
+const publicDns = async () => [{ address: '93.184.216.34' }];
 const ok = (type = 'image/png') => async () => ({ ok: true, status: 200, headers: { get: () => type } });
 
 // --- check ------------------------------------------------------------------
@@ -49,19 +50,19 @@ test('check: repeated links are errors, unless the title starts with "Update:"',
 });
 
 test('check: images must load as images; a missing image is only a note', async () => {
-  assert.deepEqual((await checkIssue(issue(), { checkImages: true, load: ok() })).errors, []);
-  const noImage = await checkIssue(issue(), { checkImages: true, load: ok() });
+  assert.deepEqual((await checkIssue(issue(), { checkImages: true, lookup: publicDns, load: ok() })).errors, []);
+  const noImage = await checkIssue(issue(), { checkImages: true, lookup: publicDns, load: ok() });
   assert.match(noImage.warnings.join('\n'), /items\[1\] has no image/);
 
-  const html = await checkIssue(issue(), { checkImages: true, load: ok('text/html') });
+  const html = await checkIssue(issue(), { checkImages: true, lookup: publicDns, load: ok('text/html') });
   assert.match(html.errors.join('\n'), /does not load as an image/);
 
-  const failing = await checkIssue(issue(), { checkImages: true, load: async () => { throw new Error('boom'); } });
+  const failing = await checkIssue(issue(), { checkImages: true, lookup: publicDns, load: async () => { throw new Error('boom'); } });
   assert.match(failing.errors.join('\n'), /could not be requested \(boom\)/);
 
   const local = issue();
   local.items[0].image = 'http://127.0.0.1/x.png';
-  assert.match((await checkIssue(local, { checkImages: true, load: ok() })).errors.join('\n'), /not a public/);
+  assert.match((await checkIssue(local, { checkImages: true, lookup: publicDns, load: ok() })).errors.join('\n'), /not a public/);
 });
 
 test('check: item count limits come from the config', async () => {

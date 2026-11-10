@@ -1,7 +1,7 @@
 'use strict';
 
 const { validateIssue, isWebUrl } = require('./issues');
-const { isFetchableUrl } = require('./images');
+const { isFetchableUrl, requestPublic } = require('./images');
 
 const WORDS_PER_MINUTE = 200;
 
@@ -28,7 +28,7 @@ function reportedLinks(recentIssues, exceptId) {
  * Full check of one issue: schema, duplicates against recent issues and,
  * when asked, whether every image really loads. Pure apart from the image requests.
  */
-async function checkIssue(issue, { limits, recentIssues = [], checkImages = false, load = fetch } = {}) {
+async function checkIssue(issue, { limits, recentIssues = [], checkImages = false, load = fetch, lookup } = {}) {
   const errors = validateIssue(issue, limits);
   const warnings = [];
   if (errors.length > 0 && !Array.isArray(issue?.items)) return { errors, warnings, minutes: 0 };
@@ -52,10 +52,7 @@ async function checkIssue(issue, { limits, recentIssues = [], checkImages = fals
         return;
       }
       try {
-        const response = await load(item.image, {
-          headers: { 'User-Agent': 'Mozilla/5.0 (Dispatch)' },
-          signal: AbortSignal.timeout(20_000),
-        });
+        const response = await requestPublic(item.image, { load, ...(lookup ? { lookup } : {}) });
         const type = (response.headers.get('content-type') || '').split(';')[0].trim();
         if (!response.ok || !type.startsWith('image/')) {
           errors.push(`items[${i}].image does not load as an image (${response.ok ? type || 'no content type' : `HTTP ${response.status}`}). Replace it or set it to null.`);
