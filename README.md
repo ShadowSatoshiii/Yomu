@@ -17,6 +17,10 @@
   <img src="./docs/img/app.png" width="920" alt="The Yomu app showing the Midday Edition"/>
 </p>
 
+<p align="center">
+  <img src="./docs/img/yomu-demo.gif" width="720" alt="Yomu in 14 seconds: install, open the app, ask Claude to add your projects"/>
+</p>
+
 <img src="./assets/h-why.svg" width="100%" alt="Why Yomu?"/>
 
 News feeds are the same for everybody. Yomu is not. It reads **your own project folders** and picks the news that matters to what *you* build.
