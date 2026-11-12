@@ -34,7 +34,7 @@ News feeds are the same for everybody. Yomu is not. It reads **your own project 
 | Area | What you get |
 | --- | --- |
 | **Magazine view** | Lead story, numbered briefs, images, reading progress bar, archive sidebar, light paper look |
-| **Issues** | One file per issue (`YYYY-MM-DD-HHMM.json`), three a day by default, a `NEW` badge, and a notice when a scheduled issue is still missing |
+| **Issues** | One file per issue (`YYYY-MM-DD-HHMM.json`), six a day by default, a `NEW` badge, and a notice when a scheduled issue is still missing |
 | **Images** | Linked in the issue, cached on disk after the first view, so old issues stay readable offline |
 | **Personal** | `yomu.config.json`, your own `profile.md` and an automatic scan of your project folders |
 | **Languages** | The issues can be written in any language Claude writes. The interface ships in English and German and is easy to extend |
@@ -106,7 +106,7 @@ Everything lives in `yomu.config.json` (copy it from `yomu.config.example.json`)
 | `language` | `"English"` | The language the **issues** are written in. Any language Claude writes |
 | `uiLanguage` | `"auto"` | The language of the **app**: `"auto"` (follow the system), `"en"`, `"de"` or your own |
 | `userName` | `""` | Optional. The cat greets you by name |
-| `schedule` | `["08:00","13:00","19:00"]` | When issues are written, in local time. The app uses it to notice a missing issue |
+| `schedule` | `["08:00","10:00","13:00","16:00","19:00","21:00"]` | When issues are written, in local time. The app uses it to notice a missing issue |
 | `issuesDir` | `"issues"` | Where the issues are stored |
 | `items` | `{ "min": 4, "max": 6 }` | How many items an issue has, lead story included |
 | `sources` | GitHub Trending and Hacker News on | Switch the built-in sources on or off, add your own pages in `extra` |
@@ -170,8 +170,8 @@ Run `npm run schedule`. It prints the **cron expression** for your times and the
 
 A few honest notes:
 
-- Scheduled tasks run while the Claude desktop app is open. If the app was closed at the scheduled time, the run is caught up on the next launch, and the issue gets the time of its slot.
-- Every run uses your Claude plan like any other session. Three runs a day can reach the usage limit on a smaller plan, especially when you work with Claude in between. A run that hits the limit writes nothing and leaves the slot empty. If that happens to you, use fewer times in `schedule`.
+- Scheduled tasks run while the Claude desktop app is open. If the computer was off at a scheduled time, nothing is lost: the next run writes **every** missing issue (`npm run missing` lists them), however long ago, and each one gets the time of its slot.
+- Every run uses your Claude plan like any other session. Six runs a day can reach the usage limit on a smaller plan, especially when you work with Claude in between. A run that hits the limit writes nothing and leaves the slot empty. If that happens to you, use fewer times in `schedule`.
 - Tested with scheduled tasks in the Claude desktop app. Any scheduler that can start Claude in this folder with the prompt should work too, but that is not tested here.
 
 ## Privacy

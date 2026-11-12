@@ -20,7 +20,7 @@ const REMEMBER = 'yomu.lastSeen';
 const EASE = 'cubic-bezier(.2,.7,.2,1)';
 const CALM = matchMedia('(prefers-reduced-motion: reduce)');
 
-let cfg = { language: 'en', userName: '', schedule: ['08:00', '13:00', '19:00'], strings: {} };
+let cfg = { language: 'en', userName: '', schedule: ['08:00', '10:00', '13:00', '16:00', '19:00', '21:00'], strings: {} };
 let issues = [];
 let sample = false;
 let selected = null;
@@ -256,6 +256,28 @@ function expectedIssue(now) {
   return { id: `${date}-${slot.replace(':', '')}`, date, time: slot };
 }
 
+// Every slot from the oldest issue until now that has no issue (a missed run is caught up, never skipped).
+function missingSlots(now) {
+  if (issues.length === 0) return [];
+  const have = new Set(issues.map((issue) => issue.id));
+  const oldest = [...have].sort()[0];
+  const limit = new Date(now.getTime() - GRACE_MINUTES * 60_000);
+  const times = [...cfg.schedule].sort();
+  const pad = (n) => String(n).padStart(2, '0');
+  const out = [];
+  for (const day = new Date(`${oldest.slice(0, 10)}T00:00:00`); day <= limit; day.setDate(day.getDate() + 1)) {
+    const date = `${day.getFullYear()}-${pad(day.getMonth() + 1)}-${pad(day.getDate())}`;
+    for (const time of times) {
+      const [h, m] = time.split(':').map(Number);
+      const id = `${date}-${time.replace(':', '')}`;
+      if (new Date(day.getFullYear(), day.getMonth(), day.getDate(), h, m) <= limit && id > oldest && !have.has(id)) {
+        out.push({ id, date, time });
+      }
+    }
+  }
+  return out;
+}
+
 function showNotice() {
   const notice = document.getElementById('notice');
   if (sample) {
@@ -263,10 +285,10 @@ function showNotice() {
     notice.textContent = t('sampleNotice');
     return;
   }
-  const due = expectedIssue(new Date());
-  const missing = issues.length > 0 && !issues.some((issue) => issue.id >= due.id);
-  notice.hidden = !missing;
-  if (missing) notice.textContent = t('missing', { date: dayLabel(due.date), time: due.time });
+  const gaps = missingSlots(new Date());
+  notice.hidden = gaps.length === 0;
+  if (gaps.length === 1) notice.textContent = t('missing', { date: dayLabel(gaps[0].date), time: gaps[0].time });
+  else if (gaps.length > 1) notice.textContent = t('missingMany', { count: gaps.length });
 }
 
 // --- the cat ----------------------------------------------------------------

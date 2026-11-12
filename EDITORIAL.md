@@ -1,6 +1,6 @@
 # Yomu editorial guide
 
-This file is the standing instruction for the AI editor (Claude). Every scheduled run reads it first and follows it to write **exactly one new issue**.
+This file is the standing instruction for the AI editor (Claude). Every scheduled run reads it first and follows it to write **one issue for every slot that is still missing** (usually exactly one).
 
 It is plain Markdown on purpose. You can change how your issues look and feel by asking Claude to edit this file, for example: *"Make the issues shorter"*, *"Add Rust news"* or *"Write in a more casual tone"*. See [Make it yours](README.md#make-it-yours) in the README.
 
@@ -22,8 +22,8 @@ Know the reader **only** from these files and the config. Do not use anything el
 
 ## One run, step by step
 
-1. **Find the slot.** The slot is the latest time in `schedule` that is at or before the current time on this machine (**local time**, not UTC). (If the run starts before the first slot of the day, use the last slot of the previous day.) The issue id is `YYYY-MM-DD-HHMM` for that slot, for example `2026-11-11-0800`. If `issues/<id>.json` already exists, change nothing and finish with one sentence, even when a later slot is close: the next scheduled run covers it. Files in `samples/` never count. Create the `issues` folder if it does not exist.
-2. **Name the issue.** Give it a short label in the issue language: "Morning Edition" for slots before 11:00, "Midday Edition" before 16:00, "Evening Edition" after that. For other schedules choose a fitting name.
+1. **Find the slots.** Run `npm run missing`. It lists every slot (local time, not UTC) that should exist by now but does not, **oldest first**, one per line as `id<TAB>date<TAB>time`. A slot is missed when the computer was off or offline at its time; it is never skipped: write it now, however long ago it was, with that slot's id, date and time. The issue id is `YYYY-MM-DD-HHMM`, for example `2026-11-11-0800`. If the output is empty, change nothing and finish with one sentence. Files in `samples/` never count. Create the `issues` folder if it does not exist. Then do steps 2 to 8 **once per listed slot, oldest first**, and research only once for the whole run. A caught-up issue is written from today's news, so give each slot different items: step 3 already sees the issues you wrote a moment ago.
+2. **Name the issue.** Give it a short label in the issue language: "Morning Edition" for slots before 11:00, "Midday Edition" before 16:00, "Evening Edition" after that. If two slots of one day get the same name, add the time ("Evening Edition, 19:00"). For other schedules choose a fitting name.
 3. **Skip what was reported.** Run `npm run reported -- 14`. It lists the issue, link and title of everything from the last 14 days. Empty output simply means that nothing was reported yet. Do not report those links again, unless there is real news about them; then start the title with `Update:`.
 4. **Research.** Look at:
    - GitHub Trending: `https://github.com/trending?since=daily` and `?since=weekly` (only if `sources.githubTrending` is true)
@@ -36,7 +36,7 @@ Know the reader **only** from these files and the config. Do not use anything el
 5. **Choose.** One `lead` item and the rest `brief` items, so that the issue has between `items.min` and `items.max` items in total. Prefer what is relevant to the profile and `interests`. Mix repositories, releases and general tech.
 6. **Write** `issues/<id>.json` in the schema below.
 7. **Check.** Run `npm run check -- --latest --images --markdown`. It validates the file, rejects repeated links, requests every image and writes a Markdown copy. Fix every `PROBLEM` it lists (replace a broken image or set it to `null`) and run it again until it prints `OK`.
-8. **Report** in three or four lines: the file name, the lead title, the number of items, the read time, and anything that did not work. Use the same format when the task prompt asks for less.
+8. **Report** in three or four lines: for each issue written: the file name, the lead title, the number of items, the read time; then anything that did not work. Use the same format when the task prompt asks for less.
 
 ## Writing rules
 

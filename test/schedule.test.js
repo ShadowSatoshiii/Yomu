@@ -5,6 +5,7 @@ const assert = require('node:assert/strict');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const { toCron, taskPrompt } = require('../src/schedule');
+const { missingSlots } = require('../src/slots');
 
 const ROOT = path.join(__dirname, '..');
 
@@ -38,4 +39,21 @@ test('cli: the desktop shortcut refuses to run without Electron or off Windows',
   const result = spawnSync(process.execPath, [path.join(ROOT, 'scripts', 'desktop-shortcut.js')], { encoding: 'utf8' });
   // On this folder Electron may or may not be installed; either way the script must exit cleanly with a message.
   assert.ok([0, 1, 2].includes(result.status), result.stderr);
+});
+
+test('slots: a missed slot is caught up, however old', () => {
+  const schedule = ['08:00', '13:00'];
+  const now = new Date(2026, 10, 13, 14, 0);
+  const missing = missingSlots(schedule, ['2026-11-11-0800', '2026-11-11-1300', '2026-11-12-1300'], now);
+  assert.deepEqual(missing.map((s) => s.id), ['2026-11-12-0800', '2026-11-13-0800', '2026-11-13-1300']);
+});
+
+test('slots: nothing is missing when every slot exists', () => {
+  const now = new Date(2026, 10, 11, 14, 0);
+  assert.deepEqual(missingSlots(['08:00', '13:00'], ['2026-11-11-0800', '2026-11-11-1300'], now), []);
+});
+
+test('slots: without any issue only the latest slot counts', () => {
+  const now = new Date(2026, 10, 11, 14, 0);
+  assert.deepEqual(missingSlots(['08:00', '13:00'], [], now).map((s) => s.id), ['2026-11-11-1300']);
 });

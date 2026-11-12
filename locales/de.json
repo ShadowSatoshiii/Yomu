@@ -20,6 +20,7 @@
   "sampleNotice": "Das sind Beispielausgaben. Sobald die Redaktion deine erste echte Ausgabe geschrieben hat, ersetzt sie diese.",
   "endOf": "Ende der {name}",
   "footer": "Die Redaktion schreibt um {times}",
+  "missingMany": "{count} Ausgaben fehlen noch. Sie werden nachgeholt, sobald die geplante Aufgabe läuft.",
   "missing": "Die Ausgabe von {date}, {time} fehlt noch. Sie wird nachgeholt, sobald die geplante Aufgabe läuft.",
   "notifyTitle": "{app}: {name} ist da",
   "notifyBody": "{n} Meldungen",

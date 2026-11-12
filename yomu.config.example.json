@@ -2,7 +2,7 @@
   "language": "English",
   "uiLanguage": "auto",
   "userName": "",
-  "schedule": ["08:00", "13:00", "19:00"],
+  "schedule": ["08:00", "10:00", "13:00", "16:00", "19:00", "21:00"],
   "issuesDir": "issues",
   "items": { "min": 4, "max": 6 },
   "sources": {

@@ -20,6 +20,7 @@
   "sampleNotice": "These are sample issues. Your first real issue replaces them as soon as the editor has written it.",
   "endOf": "End of the {name}",
   "footer": "The editor writes at {times}",
+  "missingMany": "{count} issues are still missing. They are caught up as soon as the scheduled task runs.",
   "missing": "The issue of {date}, {time} is still missing. It is caught up as soon as the scheduled task runs.",
   "notifyTitle": "{app}: {name} is here",
   "notifyBody": "{n} items",

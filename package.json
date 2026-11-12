@@ -15,6 +15,7 @@
     "scan": "node tools/scan-projects.js",
     "check": "node tools/check-issue.js",
     "reported": "node tools/reported.js",
+    "missing": "node tools/missing.js",
     "test": "node --test"
   },
   "devDependencies": {
